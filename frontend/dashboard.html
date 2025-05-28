@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLearn - Dashboard</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo-container">
+                <img src="./assets/logo.png" alt="TechLearn Logo">
+                <h1>TechLearn.</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="exercises.html">Exercises</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </nav>
+            <div class="user-greeting">
+                <p>Hello, <span id="username">User</span></p>
+                <p>Let's learn something new today!</p>
+            </div>
+        </header>
+        
+        <main class="dashboard-content">
+            <section class="stats-overview">
+                <div class="stat-card">
+                    <h3>Rank</h3>
+                    <p class="stat-value">#174</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Accuracy</h3>
+                    <p class="stat-value">78%</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Solved Exercises</h3>
+                    <p class="stat-value">7</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Exercises</h3>
+                    <p class="stat-value">110</p>
+                </div>
+            </section>
+            
+            <section class="course-progress">
+                <h2>Course Progress</h2>
+                <div class="progress-section">
+                    <h3>Point Progress</h3>
+                    <div class="progress-tags">
+                        <span class="progress-tag">Identity</span>
+                        <span class="progress-tag">Exercise</span>
+                        <span class="progress-tag">Shortcase</span>
+                    </div>
+                </div>
+                
+                <div class="exercise-list">
+                    <div class="exercise-item completed">
+                        <h3>The Web Awakens – Creating Your First HTML Page</h3>
+                        <div class="exercise-stats">
+                            <span>Submissions: 3</span>
+                            <span>Status: Completed</span>
+                        </div>
+                    </div>
+                    <div class="exercise-item attempted">
+                        <h3>SpooK Laud and Clear – Meet the Headings!</h3>
+                        <div class="exercise-stats">
+                            <span>Submissions: 1</span>
+                            <span>Status: Attempted</span>
+                        </div>
+                    </div>
+                    <div class="exercise-item completed">
+                        <h3>The Grocery Scroll – Unteaching Lists</h3>
+                        <div class="exercise-stats">
+                            <span>Submissions: 9</span>
+                            <span>Status: Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="progress-visualization">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%;"></div>
+                </div>
+                <p>20% Exercise Completed</p>
+                <p class="subtext">Exercises set to be Attempted</p>
+            </section>
+            
+            <section class="daily-tip">
+                <h3>Tip of the day</h3>
+                <p>AI generated advice based on the user's progress</p>
+            </section>
+        </main>
+    </div>
+    
+    <script src="./scripts/dashboard.js"></script>
+</body>
+</html>

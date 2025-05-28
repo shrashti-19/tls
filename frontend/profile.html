@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLearn - Profile</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo-container">
+                <img src="./assets/logo.png" alt="TechLearn Logo">
+                <h1>TechLearn.</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="exercises.html">Exercises</a></li>
+                    <li><a href="profile.html" class="active">Profile</a></li>
+                </ul>
+            </nav>
+            <div class="user-greeting">
+                <p>Hello, <span id="username">User</span></p>
+                <p>Let's learn something new today!</p>
+            </div>
+        </header>
+        
+        <main class="profile-content">
+            <section class="user-info">
+                <div class="user-header">
+                    <img src="./assets/user-icon.png" alt="User Profile" class="user-avatar">
+                    <div>
+                        <h2 id="user-fullname">User Name</h2>
+                        <h3 id="user-title">Web Developer</h3>
+                        <div class="social-links">
+                            <a href="#" id="linkedin-url">linkedin.url</a>
+                            <a href="#" id="github-url">githubprofile</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="personal-stats">
+                <h2>Personal Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Rank</h3>
+                        <p class="stat-value">#174</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Attempted</h3>
+                        <p class="stat-value">6</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Solved</h3>
+                        <p class="stat-value">3</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Course Taken</h3>
+                        <p class="stat-value">Web Developer Course - Baby Steps</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="streak-stats">
+                <h2>Streak</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Active Days</h3>
+                        <p class="stat-value">6</p>
+                        <p class="stat-subtext">This Month</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Longest Streak</h3>
+                        <p class="stat-value">6</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="./scripts/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLearn - Sign In</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>Welcome to TechLearn</h1>
+            <p>Creating developers, one at a time.</p>
+            <p class="subtitle">Practice Daily. Hone your skills.</p>
+        </div>
+        
+        <div class="auth-card">
+            <div class="branding">
+                <img src="./assets/logo.png" alt="TechLearn Logo">
+                <h2>Tech Learn Solutions</h2>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="tab-btn active" id="signin-tab">Sign In</button>
+                <button class="tab-btn" id="signup-tab">Sign Up</button>
+            </div>
+            
+            <form id="signin-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="email">Email Id</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter Password" required>
+                    <div class="password-strength">
+                        <span>Password Strength: <span id="strength-indicator">Weak</span></span>
+                        <ul class="password-rules">
+                            <li>Cannot contain your name or email address</li>
+                            <li>At least 8 characters</li>
+                            <li>Contain a number or symbol</li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit" class="auth-btn">Continue</button>
+            </form>
+            
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-email">Email Id</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create Password" required>
+                    <div class="password-strength">
+                        <span>Password Strength: <span id="signup-strength-indicator">Weak</span></span>
+                        <ul class="password-rules">
+                            <li>Cannot contain your name or email address</li>
+                            <li>At least 8 characters</li>
+                            <li>Contain a number or symbol</li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>By signing up to create an account you accept Company's Terms of use & Privacy Policy.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./scripts/auth.js"></script>
+</body>
+</html>
