@@ -1,7 +1,7 @@
 # Frontend - TLS Project
 
 ## Overview
-This is the frontend of the TLS project, built with [React.js](https://reactjs.org/). It provides the user interface for user authentication, profile management, and other features.
+This is the frontend of the TLS project, built with JavaScript. It provides the user interface for user authentication, profile management, and other features.
 
 ## Features
 - User registration and login with JWT authentication
@@ -10,9 +10,8 @@ This is the frontend of the TLS project, built with [React.js](https://reactjs.o
 - Responsive design
 
 ## Tech Stack
-- React.js (v18.x)
 - JavaScript (ES6+)
-- CSS (or Tailwind CSS / any styling framework you use)
+- CSS
 - Fetch API / Axios for HTTP requests
 
 ## Setup and Installation
