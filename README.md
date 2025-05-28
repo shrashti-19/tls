@@ -126,3 +126,9 @@ Passwords are hashed before storage.
 Use a strong secret key for JWT.
 
 Protect sensitive routes with authenticateToken middlewar
+
+
+Authors
+Frontend - Kushagra Gaur
+Backend - Shrashti Dwivedi
+
