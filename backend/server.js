@@ -7,7 +7,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-
+const PORT = 4000;
+const profileRouter = require('./routes/profile');
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -16,6 +17,11 @@ app.use(express.json());
 app.use('/api/auth',require('./routes/auth'));
 app.use('/api/exercises',require('./routes/exercises'));
 app.use('/api/progress',require('./routes/progress'));
+app.use('/api/profile',profileRouter);
+
+app.get('/test', (req, res) => {
+  res.send('🧪 Test route working');
+});
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
@@ -24,8 +30,8 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => {
   console.log('✅ MongoDB Connected');
-  app.listen(process.env.PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${process.env.PORT}`);
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
   });
 })
 .catch(err => {
