@@ -332,9 +332,23 @@ document.addEventListener('DOMContentLoaded', function() {
         autoCloseBrackets: true,
         indentUnit: 4
     });
-    
+
+
+//     let submissionCount = 0;
+// let solvedExercises = new Set(); // Use Set to avoid duplicate counting
+
+let exerciseStats = JSON.parse(localStorage.getItem('exerciseStats') || '{}');
+let submissionCount = 0;
+let solvedExercises = new Set(Object.keys(exerciseStats).filter(id => exerciseStats[id].solved));
+
+const submissionCountElement = document.getElementById('exercise-submission-count');
+const solvedCountElement = document.getElementById('exercise-solved-count');
+
+
+
     let currentExercise = null;
     let allExercises = [];
+    // let exerciseStats = JSON.parse(localStorage.getItem('exerciseStats')) || {};
     
     // DOM elements
     const problemTitle = document.getElementById('problem-title');
@@ -391,6 +405,17 @@ document.addEventListener('DOMContentLoaded', function() {
         problemTitle.textContent = exercise.title;
         problemDescription.innerHTML = formatProblemDescription(exercise.story);
         editor.setValue(exercise.code || '// Your code here');
+
+
+        // Initialize if not already tracked
+if (!exerciseStats[exercise.id]) {
+    exerciseStats[exercise.id] = { submissions: 0, solved: false };
+}
+
+const stats = exerciseStats[exercise.id];
+document.getElementById('exercise-submission-count').textContent = stats.submissions;
+document.getElementById('exercise-status').textContent = stats.solved ? 'Solved' : 'Unsolved';
+
         
         if (exercise.hint) {
             hintContent.textContent = exercise.hint;
@@ -446,17 +471,64 @@ document.addEventListener('DOMContentLoaded', function() {
         outputContent.textContent = `Running code...\n\n${code.substring(0, 200)}...`;
     });
     
-    submitBtn.addEventListener('click', function() {
-        outputContent.textContent = 'Submitting your solution...';
-        setTimeout(() => {
-            const isCorrect = Math.random() > 0.3; // Mock correctness
-            if (isCorrect) {
-                outputContent.innerHTML = '<span style="color: var(--success-color)">✓ Congratulations! Your solution is correct!</span>';
-            } else {
-                outputContent.innerHTML = '<span style="color: var(--danger-color)">✗ Your solution needs some adjustments. Try again!</span>';
+    // submitBtn.addEventListener('click', function() {
+    //     outputContent.textContent = 'Submitting your solution...';
+    //     setTimeout(() => {
+    //         const isCorrect = Math.random() > 0.3; // Mock correctness
+    //         if (isCorrect) {
+    //             outputContent.innerHTML = '<span style="color: var(--success-color)">✓ Congratulations! Your solution is correct!</span>';
+    //         } else {
+    //             outputContent.innerHTML = '<span style="color: var(--danger-color)">✗ Your solution needs some adjustments. Try again!</span>';
+    //         }
+    //     }, 1500);
+    // });
+
+    submitBtn.addEventListener('click', function () {
+    outputContent.textContent = 'Submitting your solution...';
+
+    if (!currentExercise) return;
+
+    const exerciseId = currentExercise.id;
+
+    // Initialize stats if not present
+    if (!exerciseStats[exerciseId]) {
+        exerciseStats[exerciseId] = { submissions: 0, solved: false };
+    }
+
+    // Increment both local and overall submission count
+    exerciseStats[exerciseId].submissions++;
+    submissionCount++;
+
+    if (submissionCountElement) {
+        submissionCountElement.textContent = exerciseStats[exerciseId].submissions;
+    }
+
+    setTimeout(() => {
+        const isCorrect = Math.random() > 0.3;
+
+        if (isCorrect) {
+            outputContent.innerHTML = '<span style="color: var(--success-color)">✓ Congratulations! Your solution is correct!</span>';
+
+            if (!exerciseStats[exerciseId].solved) {
+                exerciseStats[exerciseId].solved = true;
+                solvedExercises.add(exerciseId);
+
+                if (solvedCountElement) {
+                    solvedCountElement.textContent = solvedExercises.size;
+                }
             }
-        }, 1500);
-    });
+        } else {
+            outputContent.innerHTML = '<span style="color: var(--danger-color)">✗ Your solution needs some adjustments. Try again!</span>';
+        }
+
+        // Save back to localStorage
+        localStorage.setItem('exerciseStats', JSON.stringify(exerciseStats));
+    }, 1500);
+});
+
+
+
+
     
     // Initialize app
     fetchUserProfile();

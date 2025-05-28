@@ -25,6 +25,11 @@
             <div class="user-greeting">
                 <p>Hello, <span id="username">User</span></p>
                 <p>Ready to solve some challenges?</p>
+                <div class="user-stats">
+    <p>Submissions: <span id="exercise-submission-count">0</span></p>
+    <p>Solved: <span id="exercise-solved-count">0</span></p>
+</div>
+
             </div>
         </header>
         
@@ -82,5 +87,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closetag.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
     <script src="./scripts/exercises.js"></script>
+    <script>
+  document.querySelector(".solve-btn").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
 </body>
 </html>

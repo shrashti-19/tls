@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById('username').textContent = user.username.split(' ')[0];
 
     // For demo, let’s assume these are your stats — update these as per your actual data
-    const rank = 174;         // replace with actual rank from user data if available
+    const rank = 1;         // replace with actual rank from user data if available
     const accuracy = 78;      // replace with actual accuracy from user data if available
     const solved = 7;         // replace with actual solved count
     const totalExercises = 10; // replace with actual total
@@ -46,3 +46,29 @@ document.addEventListener('DOMContentLoaded', async function() {
     console.error('Error loading profile:', err);
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const stats = JSON.parse(localStorage.getItem('exerciseStats')) || {};
+
+    let totalSubmissions = 0;
+    let totalSolved = 0;
+
+    for (const id in stats) {
+        totalSubmissions += stats[id].submissions;
+        if (stats[id].solved) totalSolved++;
+    }
+
+    // Get total exercises from DOM
+    const totalExercises = document.querySelectorAll('.exercise-item').length;
+
+    const accuracy = totalSubmissions > 0
+        ? ((totalSolved / totalSubmissions) * 100).toFixed(2)
+        : '0.00';
+
+    // Update DOM
+    document.querySelector('.stat-card:nth-child(2) .stat-value').textContent = `${accuracy}%`;
+    document.querySelector('.stat-card:nth-child(3) .stat-value').textContent = totalSolved;
+    document.querySelector('.stat-card:nth-child(4) .stat-value').textContent = totalExercises;
+});
+
+
